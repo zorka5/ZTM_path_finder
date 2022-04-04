@@ -3,5 +3,6 @@
 #include <string>
 
 class Algorithm {
-public: std::string name;
+public: 
+	std::string name;
 };

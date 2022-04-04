@@ -129,16 +129,6 @@ void Dijkstra<T>::find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::s
     }
 
 
-    //std::cout << "prev: " << std::endl;
-    //for (auto& el : prev) {
-
-    //    //std::map<std::shared_ptr<Vertex<T>>, double> el;
-    //    //std::cout << "dist" << std::endl;
-    //    Vertex<T>* v1 = el.first.get(); 
-    //    Vertex<T>* v2 = el.second.get();
-    //    //std::cout << v1->get_data() << ": " << v2->get_data() << std::endl;
-    //}
-
     //finding a path to end vertex
     std::vector<std::shared_ptr<Vertex<T>>> path;
     std::shared_ptr<Vertex<T>> current = end;
