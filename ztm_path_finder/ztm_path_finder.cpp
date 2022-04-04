@@ -9,6 +9,8 @@
 
 #include "Graph.h"
 #include "Vertex.h"
+#include "Dijkstra.h"
+#include "Algorithm.h"
 
 int main()
 {
@@ -116,7 +118,8 @@ int main()
 	//std::cout << "V count:" << G1.get_vertices_count() <<std::endl;
 	
 	//std::cout << v1->get_data() << " " << v2->get_data() << std::endl;
-	G1.a_star(v1, v2);	
+	Dijkstra<int> D;
+	D.find_path(G1, v1, v7);
 
 	return 0;
 }
