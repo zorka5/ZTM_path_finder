@@ -14,7 +14,7 @@ private:
     double calculate_heuristics(std::shared_ptr<Vertex<T>> current, std::shared_ptr<Vertex<T>> destination);
 public: 
     std::string name = "A star";
-    void find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shared_ptr<Vertex<T>> end);
+    virtual void find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shared_ptr<Vertex<T>> end);
 };
 
 template <typename T>
@@ -28,9 +28,9 @@ double Astar<T>::calculate_heuristics(std::shared_ptr<Vertex<T>> current, std::s
     Localization end_loc = end_ver->get_loc();
 
     //std::cout << end_loc.x << curr_loc.x << end_loc.y << curr_loc.y;
-    std::cout << "hstart";
+    //std::cout << "hstart";
     h = abs(end_loc.x - curr_loc.x) + abs(end_loc.y - curr_loc.y);
-    std::cout << "hend";
+    //std::cout << "hend";
 
     return h;
 }
@@ -80,13 +80,13 @@ void Astar<T>::find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shar
     }
 
     //wypisanie kolejki
-    std::multiset<pair_sharedptr_double, myComp> temp = Q;
+    //std::multiset<pair_sharedptr_double, myComp> temp = Q;
 
-    std::cout << "Wypisanie kolejki: " << std::endl;
-    for (auto& el : Q) {
-        Vertex<T>* v = el.first.get();
-        std::cout << v->get_data() << ": "  << el.second << std::endl;
-    }
+    //std::cout << "Wypisanie kolejki: " << std::endl;
+    //for (auto& el : Q) {
+    //    Vertex<T>* v = el.first.get();
+    //    std::cout << v->get_data() << ": "  << el.second << std::endl;
+    //}
 
     while (!Q.empty()) {
         auto it = Q.begin(); // iterator na 1 element
@@ -119,26 +119,26 @@ void Astar<T>::find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shar
             if (dist[v] > dist[u] + G.get_edge_weight(u, v)) {
                 prev[v] = u;
 
-                //Q.decrease_priority(v, alt)
+                //Decrease priority
                 pair_sharedptr_double value(v, dist[v]);
                 auto itr = Q.find(value);
                 if (itr != Q.end()) {
                     Q.erase(itr);
                     dist[v] = dist[u] + G.get_edge_weight(u, v);
 
-                    std::cout << "h: " << calculate_heuristics(v, end) << std::endl;
+                    //std::cout << "h: " << calculate_heuristics(v, end) << std::endl;
 
                     priority[v] = dist[v] + calculate_heuristics(v, end);
                     pair_sharedptr_double new_set_element(v, priority[v]);
                     Q.insert(new_set_element);
                 }
 
-                //std::cout << "Wypisanie kolejki" << std::endl;
-                std::cout << std::endl << "Wypisywanie kolejki: " << std::endl;
-                for (auto& el : Q) {
-                    Vertex<T>* v = el.first.get();
-                    std::cout << v->get_data() << ": " << el.second << std::endl;
-                }
+                ////Wypisywanie kolejki
+                //std::cout << std::endl << "Wypisywanie kolejki: " << std::endl;
+                //for (auto& el : Q) {
+                //    Vertex<T>* v = el.first.get();
+                //    std::cout << v->get_data() << ": " << el.second << std::endl;
+                //}
             }
         }
     }
@@ -162,6 +162,6 @@ void Astar<T>::find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shar
     }
 
     //print cost
-    std::cout << std::endl << "Cost:" << dist[end];
+    std::cout << std::endl << "Cost:" << dist[end] << std::endl;
 
 }

@@ -10,7 +10,7 @@ class Dijkstra :
 {
 public:
     std::string name;
-    void find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shared_ptr<Vertex<T>> end);
+    virtual void find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shared_ptr<Vertex<T>> end);
 };
 
 template <typename T>
@@ -146,5 +146,5 @@ void Dijkstra<T>::find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::s
     }
 
     //print cost
-    std::cout << std::endl << "Cost:" << dist[end];
+    std::cout << std::endl << "Cost:" << dist[end] <<std::endl;
 }
