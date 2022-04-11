@@ -10,18 +10,18 @@
 #include "Graph.h"
 #include "Vertex.h"
 #include "Dijkstra.h"
-#include "Algorithm.h"
+#include "Astar.h"
+#include "BellmanFord.h"
 
 int main()
 {
-	
-	std::shared_ptr<Vertex<int>> v1(new Vertex<int>(1));
-	std::shared_ptr<Vertex<int>> v2(new Vertex<int>(2));
-	std::shared_ptr<Vertex<int>> v3(new Vertex<int>(3));
-	std::shared_ptr<Vertex<int>> v4(new Vertex<int>(4));
-	std::shared_ptr<Vertex<int>> v5(new Vertex<int>(5));
-	std::shared_ptr<Vertex<int>> v6(new Vertex<int>(6));
-	std::shared_ptr<Vertex<int>> v7(new Vertex<int>(7));
+	std::shared_ptr<Vertex<int>> v1(new Vertex<int>(1, Localization(0,0)));
+	std::shared_ptr<Vertex<int>> v2(new Vertex<int>(2, Localization(5,10)));
+	std::shared_ptr<Vertex<int>> v3(new Vertex<int>(3, Localization (12, 6)));
+	std::shared_ptr<Vertex<int>> v4(new Vertex<int>(4, Localization(20, 10)));
+	std::shared_ptr<Vertex<int>> v5(new Vertex<int>(5, Localization(30,5)));
+	std::shared_ptr<Vertex<int>> v6(new Vertex<int>(6, Localization(1,40)));
+	std::shared_ptr<Vertex<int>> v7(new Vertex<int>(7, Localization(100, 100)));
 
 	std::vector<std::shared_ptr<Vertex<int>>> vertices_;
 	vertices_.push_back(v1);
@@ -32,9 +32,6 @@ int main()
 	vertices_.push_back(v6);
 	vertices_.push_back(v7);
 
-	for (auto& it : vertices_) {
-		std::cout << it->get_data() << " ";
-	}
 
 	Edges<int> edges_;
 
@@ -114,12 +111,16 @@ int main()
 
 
 	Graph<int> G1(vertices_, edges_);
-	//G1.print_graph();
-	//std::cout << "V count:" << G1.get_vertices_count() <<std::endl;
-	
-	//std::cout << v1->get_data() << " " << v2->get_data() << std::endl;
+
+
 	Dijkstra<int> D;
 	D.find_path(G1, v1, v7);
+
+	Astar<int> A;
+	A.find_path(G1, v1, v7);
+
+	BellmanFord<int> B;
+	B.find_path(G1, v1, v7);
 
 	return 0;
 }
