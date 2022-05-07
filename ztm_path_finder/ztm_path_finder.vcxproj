@@ -148,7 +148,10 @@
     <ClCompile Include="ztm_path_finder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Astar.h" />
+    <ClInclude Include="BellmanFord.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="Localization.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

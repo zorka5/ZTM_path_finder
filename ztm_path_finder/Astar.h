@@ -3,17 +3,14 @@
 #include <cstdlib>
 
 #include "Algorithm.h"
-#include "Graph.h"
 
 template <typename T>
 class Astar :
     public Algorithm
 {
-
 private:
     double calculate_heuristics(std::shared_ptr<Vertex<T>> current, std::shared_ptr<Vertex<T>> destination);
 public: 
-    std::string name = "A star";
     virtual void find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shared_ptr<Vertex<T>> end);
 };
 

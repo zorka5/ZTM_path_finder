@@ -90,7 +90,6 @@ double Graph<T>::get_edge_weight(std::shared_ptr<Vertex<T>> start,std::shared_pt
         std::shared_ptr<Vertex<T>> e = edge.first.second;
 
         if (s.get() == start.get() && e.get() == end.get()) {
-            //std::cout << "Takie same" << edge.second << std::endl;
             weight = edge.second;
         }
     }

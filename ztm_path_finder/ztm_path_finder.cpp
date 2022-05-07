@@ -112,7 +112,6 @@ int main()
 
 	Graph<int> G1(vertices_, edges_);
 
-
 	Dijkstra<int> D;
 	D.find_path(G1, v1, v7);
 

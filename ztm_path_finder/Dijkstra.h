@@ -2,14 +2,12 @@
 #include <memory>
 
 #include "Algorithm.h"
-#include "Graph.h"
 
 template <typename T>
 class Dijkstra :
     public Algorithm
 {
 public:
-    std::string name;
     virtual void find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shared_ptr<Vertex<T>> end);
 };
 
