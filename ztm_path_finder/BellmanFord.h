@@ -6,7 +6,6 @@ class BellmanFord :
     public Algorithm
 {
 public:
-    std::string name = "BFS";
     virtual void find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std::shared_ptr<Vertex<T>> end);
 };
 
@@ -47,22 +46,8 @@ void BellmanFord<T>::find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std
     }
 
     int vertices_count = G.get_vertices_count();
-    //std::cout << "Vertices count: " << vertices_count << std::endl;
-
-    //for (auto& v : G.get_vertices()) {
-    //    Vertex<T>* vertex = v.get();
-    //    std::cout << vertex->get_data() << std::endl;
-    //}
-
-    //wypisanie kolejki
-    //std::set<pair_sharedptr_double, myComp> temp = Q;
-    //for (auto& el : Q) {
-    //    Vertex<T>* v = el.first.get();
-    //    std::cout << v->get_data() << ": "  << el.second << std::endl;
-    //}
 
     for (int i = 0; i < vertices_count - 1; i++) {
-        std::cout << i << std::endl;
         for (auto& edge : G.get_edges()) {
             std::shared_ptr<Vertex<T>> v = edge.first.first;
             std::shared_ptr<Vertex<T>> u = edge.first.second;
@@ -96,7 +81,4 @@ void BellmanFord<T>::find_path(Graph<T> G, std::shared_ptr<Vertex<T>> start, std
 
     //print cost
     std::cout << std::endl << "Cost:" << dist[end] << std::endl;
-
-    
-
 }
